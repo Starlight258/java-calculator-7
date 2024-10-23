@@ -18,7 +18,7 @@ public class IntegerConvertible implements NumberConvertible<Integer> {
     }
 
     private Integer getPositiveNumber(final Integer number) {
-        if (number <= 0) {
+        if (number < 0) {
             throw new IllegalArgumentException("양수가 아닙니다.");
         }
         return number;

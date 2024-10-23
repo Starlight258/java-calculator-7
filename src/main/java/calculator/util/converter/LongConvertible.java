@@ -18,7 +18,7 @@ public class LongConvertible implements NumberConvertible<Long> {
     }
 
     private Long getPositiveNumber(final Long number) {
-        if (number <= 0) {
+        if (number < 0) {
             throw new IllegalArgumentException("양수가 아닙니다.");
         }
         return number;
