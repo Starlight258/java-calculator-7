@@ -17,16 +17,16 @@ public class LongAdder implements Addable<Long> {
         return sum;
     }
 
-    private long addWithOverflowCheck(final long number1, final long number2) {
-        if (number2 > 0 && number1 > MAX_VALUE - number2) {
+    private long addWithOverflowCheck(final long sum, final long added) {
+        if (added > 0 && sum > MAX_VALUE - added) {
             throw new IllegalStateException("오버플로우가 발생했습니다.");
         }
 
-        if (number2 < 0 && number1 < MIN_VALUE - number2) {
+        if (added < 0 && sum < MIN_VALUE - added) {
             throw new IllegalStateException("오버플로우가 발생했습니다.");
         }
 
-        return number1 + number2;
+        return sum + added;
     }
 
 }

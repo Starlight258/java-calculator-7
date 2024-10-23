@@ -17,16 +17,16 @@ public class IntegerAdder implements Addable<Integer> {
         return sum;
     }
 
-    private int addWithOverflowCheck(final int number1, final int number2) {
-        if (number2 > 0 && number1 > MAX_VALUE - number2) {
+    private int addWithOverflowCheck(final int sum, final int added) {
+        if (added > 0 && sum > MAX_VALUE - added) {
             throw new IllegalStateException("오버플로우가 발생했습니다.");
         }
 
-        if (number2 < 0 && number1 < MIN_VALUE - number2) {
+        if (added < 0 && sum < MIN_VALUE - added) {
             throw new IllegalStateException("오버플로우가 발생했습니다.");
         }
 
-        return number1 + number2;
+        return sum + added;
     }
 
 }
