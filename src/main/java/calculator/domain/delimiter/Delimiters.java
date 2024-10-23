@@ -9,10 +9,6 @@ import java.util.stream.Stream;
 
 public class Delimiters {
 
-    private static final String CONTAINING_ALL_START_REGEX = "^.*(";
-    private static final String CONTAINING_ALL_END_REGEX = ").*";
-    private static final String NON_MATCH = "(?!)";
-
     private final List<Delimiter> delimiters;
 
     public Delimiters(final List<Delimiter> delimiters) {
@@ -35,30 +31,13 @@ public class Delimiters {
     }
 
     private void validate(final Delimiter delimiter) {
-        checkIfContainsOther(delimiter);
+        validateDuplicate(delimiter);
     }
 
-    private void checkIfContainsOther(final Delimiter newDelimiter) {
-        Regex existingDelimitersRegex = makeExistingRegex();
-        Regex checkContainmentRegex = makeContainmentRegex(existingDelimitersRegex);
-
-        if (newDelimiter.matches(checkContainmentRegex)) {
-            throw new IllegalArgumentException("구분자를 중복 선언하거나, 내부에 다른 구분자를 포함할 수 없습니다.");
+    private void validateDuplicate(final Delimiter delimiter) {
+        if (delimiters.contains(delimiter)) {
+            throw new IllegalArgumentException("중복된 구분자가 존재합니다.");
         }
-    }
-
-    private Regex makeExistingRegex() {
-        Regex existingDelimitersRegex = new Regex(NON_MATCH);
-        for (Delimiter existingDelimiter : delimiters) {
-            existingDelimitersRegex.addContinuously(existingDelimiter.delimiter());
-        }
-
-        return existingDelimitersRegex;
-    }
-
-    private Regex makeContainmentRegex(final Regex existingDelimitersRegex) {
-        return new Regex(
-                CONTAINING_ALL_START_REGEX + existingDelimitersRegex.value() + CONTAINING_ALL_END_REGEX);
     }
 
     private List<Delimiter> concat(final Delimiter delimiter) {
