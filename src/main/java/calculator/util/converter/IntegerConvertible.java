@@ -21,6 +21,7 @@ public class IntegerConvertible implements NumberConvertible<Integer> {
         if (number < 0) {
             throw new IllegalArgumentException("양수가 아닙니다.");
         }
+
         return number;
     }
 

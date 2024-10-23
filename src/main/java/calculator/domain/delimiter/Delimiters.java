@@ -55,6 +55,7 @@ public class Delimiters {
             return false;
         }
         Delimiters that = (Delimiters) o;
+
         return delimiters.equals(that.delimiters);
     }
 
