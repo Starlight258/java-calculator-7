@@ -1,9 +1,9 @@
 package calculator.util.converter;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +32,7 @@ class LongConvertibleTest {
         LongConvertible longConvertible = new LongConvertible();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> longConvertible.convert(splitInput))
+        assertThatThrownBy(() -> longConvertible.convert(splitInput))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수 범위를 벗어난 수 또는 구분자를 제외한 문자열을 입력할 수 없습니다.");
     }
@@ -45,7 +45,7 @@ class LongConvertibleTest {
         LongConvertible longConvertible = new LongConvertible();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> longConvertible.convert(splitInput))
+        assertThatThrownBy(() -> longConvertible.convert(splitInput))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수 범위를 벗어난 수 또는 구분자를 제외한 문자열을 입력할 수 없습니다.");
     }
@@ -58,7 +58,7 @@ class LongConvertibleTest {
         LongConvertible longConvertible = new LongConvertible();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> longConvertible.convert(splitInput))
+        assertThatThrownBy(() -> longConvertible.convert(splitInput))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수 범위를 벗어난 수 또는 구분자를 제외한 문자열을 입력할 수 없습니다.");
     }
@@ -71,7 +71,7 @@ class LongConvertibleTest {
         LongConvertible longConvertible = new LongConvertible();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> longConvertible.convert(splitInput))
+        assertThatThrownBy(() -> longConvertible.convert(splitInput))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("양수가 아닙니다.");
     }
