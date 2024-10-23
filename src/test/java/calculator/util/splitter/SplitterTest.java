@@ -20,7 +20,7 @@ class SplitterTest {
         Splitter splitter = new Splitter();
 
         // When
-        List<String> splitInput = splitter.splitByDelimiters(input, delimiters);
+        List<String> splitInput = splitter.split(input, delimiters);
 
         // Then
         assertThat(splitInput).containsAll(List.of("1", "2"));

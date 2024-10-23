@@ -22,7 +22,7 @@ public class Regex {
         regex.append(OR).append(quote(value));
     }
 
-    public String getRegex() {
+    public String value() {
         return regex.toString();
     }
 
@@ -36,12 +36,12 @@ public class Regex {
         }
         Regex other = (Regex) o;
 
-        return this.getRegex().equals(other.getRegex());
+        return this.value().equals(other.value());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getRegex());
+        return Objects.hash(value());
     }
 
 }

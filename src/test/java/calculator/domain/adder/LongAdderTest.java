@@ -22,7 +22,7 @@ class LongAdderTest {
         LongAdder longAdder = new LongAdder();
 
         // When
-        Long sum = longAdder.addNumbers(numbers);
+        Long sum = longAdder.add(numbers);
 
         // Then
         assertThat(sum).isEqualTo(6);
@@ -36,7 +36,7 @@ class LongAdderTest {
         LongAdder longAdder = new LongAdder();
 
         // When & Then
-        assertThatThrownBy(() -> longAdder.addNumbers(numbers))
+        assertThatThrownBy(() -> longAdder.add(numbers))
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("오버플로우가 발생했습니다.");
     }

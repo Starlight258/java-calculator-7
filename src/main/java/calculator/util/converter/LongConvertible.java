@@ -5,7 +5,7 @@ import java.util.List;
 public class LongConvertible implements NumberConvertible<Long> {
 
     @Override
-    public List<Long> convertStringToNumber(final List<String> splitByRegex) {
+    public List<Long> convert(final List<String> splitByRegex) {
         try {
             return splitByRegex.stream()
                     .filter(str -> str.length() > 0)

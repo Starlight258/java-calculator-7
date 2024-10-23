@@ -9,11 +9,11 @@ import java.util.List;
 
 public class Splitter {
 
-    public List<String> splitByDelimiters(final String input, final Delimiters delimiters) {
-        Regex regex = delimiters.makeDelimitersRegex();
+    public List<String> split(final String input, final Delimiters delimiters) {
+        Regex regex = delimiters.makeRegex();
 
-        return Arrays.stream(CUSTOM_DELIMITER.getPattern().split(input))
-                .flatMap(s -> Arrays.stream(s.split(regex.getRegex())))
+        return Arrays.stream(CUSTOM_DELIMITER.pattern().split(input))
+                .flatMap(s -> Arrays.stream(s.split(regex.value())))
                 .toList();
     }
 

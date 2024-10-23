@@ -19,14 +19,14 @@ public class Delimiters {
         this.delimiters = delimiters;
     }
 
-    public Delimiters addDelimiter(final Delimiter delimiter) {
-        validateDelimiters(delimiter);
+    public Delimiters add(final Delimiter delimiter) {
+        validate(delimiter);
 
-        return new Delimiters(concatDelimiters(delimiter));
+        return new Delimiters(concat(delimiter));
     }
 
-    public Regex makeDelimitersRegex() {
-        Regex regex = new Regex(CUSTOM_DELIMITER.getRegex());
+    public Regex makeRegex() {
+        Regex regex = new Regex(CUSTOM_DELIMITER.regex());
         for (Delimiter delimiter : delimiters) {
             regex.addContinuously(delimiter.delimiter());
         }
@@ -34,20 +34,20 @@ public class Delimiters {
         return regex;
     }
 
-    private void validateDelimiters(final Delimiter delimiter) {
-        checkIfDelimiterContainsOther(delimiter);
+    private void validate(final Delimiter delimiter) {
+        checkIfContainsOther(delimiter);
     }
 
-    private void checkIfDelimiterContainsOther(final Delimiter newDelimiter) {
-        Regex existingDelimitersRegex = makeExistingDelimitersRegex();
-        Regex checkContainmentRegex = makeCheckContainmentRegex(existingDelimitersRegex);
+    private void checkIfContainsOther(final Delimiter newDelimiter) {
+        Regex existingDelimitersRegex = makeExistingRegex();
+        Regex checkContainmentRegex = makeContainmentRegex(existingDelimitersRegex);
 
         if (newDelimiter.matches(checkContainmentRegex)) {
             throw new IllegalArgumentException("구분자를 중복 선언하거나, 내부에 다른 구분자를 포함할 수 없습니다.");
         }
     }
 
-    private Regex makeExistingDelimitersRegex() {
+    private Regex makeExistingRegex() {
         Regex existingDelimitersRegex = new Regex(NON_MATCH);
         for (Delimiter existingDelimiter : delimiters) {
             existingDelimitersRegex.addContinuously(existingDelimiter.delimiter());
@@ -56,12 +56,12 @@ public class Delimiters {
         return existingDelimitersRegex;
     }
 
-    private Regex makeCheckContainmentRegex(final Regex existingDelimitersRegex) {
+    private Regex makeContainmentRegex(final Regex existingDelimitersRegex) {
         return new Regex(
-                CONTAINING_ALL_START_REGEX + existingDelimitersRegex.getRegex() + CONTAINING_ALL_END_REGEX);
+                CONTAINING_ALL_START_REGEX + existingDelimitersRegex.value() + CONTAINING_ALL_END_REGEX);
     }
 
-    private List<Delimiter> concatDelimiters(final Delimiter delimiter) {
+    private List<Delimiter> concat(final Delimiter delimiter) {
 
         return Stream.concat(delimiters.stream(), Stream.of(new Delimiter(delimiter.delimiter())))
                 .toList();

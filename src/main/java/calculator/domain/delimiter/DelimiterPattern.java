@@ -14,11 +14,11 @@ public enum DelimiterPattern {
         this.pattern = Pattern.compile(regex);
     }
 
-    public String getRegex() {
+    public String regex() {
         return regex;
     }
 
-    public Pattern getPattern() {
+    public Pattern pattern() {
         return pattern;
     }
 

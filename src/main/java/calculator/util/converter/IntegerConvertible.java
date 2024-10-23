@@ -5,7 +5,7 @@ import java.util.List;
 public class IntegerConvertible implements NumberConvertible<Integer> {
 
     @Override
-    public List<Integer> convertStringToNumber(final List<String> splitByRegex) {
+    public List<Integer> convert(final List<String> splitByRegex) {
         try {
             return splitByRegex.stream()
                     .filter(str -> str.length() > 0)

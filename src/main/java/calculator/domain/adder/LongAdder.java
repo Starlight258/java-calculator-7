@@ -8,16 +8,16 @@ public class LongAdder implements Addable<Long> {
     private static final Long MIN_VALUE = Long.MIN_VALUE;
 
     @Override
-    public Long addNumbers(final List<Long> numbers) {
+    public Long add(final List<Long> numbers) {
         long sum = 0;
         for (Long number : numbers) {
-            sum = addSafely(sum, number);
+            sum = addWithOverflowCheck(sum, number);
         }
 
         return sum;
     }
 
-    private long addSafely(final long number1, final long number2) {
+    private long addWithOverflowCheck(final long number1, final long number2) {
         if (number2 > 0 && number1 > MAX_VALUE - number2) {
             throw new IllegalStateException("오버플로우가 발생했습니다.");
         }

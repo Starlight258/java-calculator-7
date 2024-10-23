@@ -24,8 +24,8 @@ public class Application {
         StringCalculator stringCalculator = new StringCalculator(consoleInputHandler, consoleOutputHandler,
                 delimiterExtractor, splitter, numberConvertible, adder);
 
-        Delimiters defaultDelimiters = stringCalculator.initialize();
-        stringCalculator.run(defaultDelimiters);
+        Delimiters defaultDelimiters = stringCalculator.initializeDefaultDelimiters();
+        stringCalculator.calculate(defaultDelimiters);
     }
 
 }

@@ -24,7 +24,7 @@ class DelimitersTest {
             Delimiter newDelimiter = new Delimiter("a!");
 
             // When
-            Delimiters totalDelimiters = delimiters.addDelimiter(newDelimiter);
+            Delimiters totalDelimiters = delimiters.add(newDelimiter);
 
             // Then
             assertThat(totalDelimiters).isEqualTo(new Delimiters(List.of(new Delimiter(","), new Delimiter("a!"))));
@@ -38,7 +38,7 @@ class DelimitersTest {
             Delimiter newDelimiter = new Delimiter(",");
 
             // When & Then
-            assertThatThrownBy(() -> delimiters.addDelimiter(newDelimiter))
+            assertThatThrownBy(() -> delimiters.add(newDelimiter))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("구분자를 중복 선언하거나, 내부에 다른 구분자를 포함할 수 없습니다.");
         }
@@ -51,7 +51,7 @@ class DelimitersTest {
             Delimiter newDelimiter = new Delimiter(",!");
 
             // When & Then
-            assertThatThrownBy(() -> delimiters.addDelimiter(newDelimiter))
+            assertThatThrownBy(() -> delimiters.add(newDelimiter))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("구분자를 중복 선언하거나, 내부에 다른 구분자를 포함할 수 없습니다.");
         }
@@ -69,7 +69,7 @@ class DelimitersTest {
             Delimiters delimiters = new Delimiters(List.of(new Delimiter(","), new Delimiter(":"), new Delimiter("!")));
 
             // When
-            Regex regex = delimiters.makeDelimitersRegex();
+            Regex regex = delimiters.makeRegex();
 
             // Then
             Regex expectedRegex = new Regex("//(.+?)\\\\n|\\Q,\\E|\\Q:\\E|\\Q!\\E");

@@ -8,14 +8,14 @@ public record Delimiter(String delimiter) {
     private static final String POSITIVE_NUMBER_REGEX = "^(\\+?)\\d*$";
 
     public Delimiter {
-        validateDelimiter(delimiter);
+        validate(delimiter);
     }
 
     public boolean matches(final Regex regex) {
-        return delimiter.matches(regex.getRegex());
+        return delimiter.matches(regex.value());
     }
 
-    private void validateDelimiter(final String delimiter) {
+    private void validate(final String delimiter) {
         checkIfOnlyLetters(delimiter);
     }
 

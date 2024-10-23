@@ -20,7 +20,7 @@ class DelimiterExtractorTest {
         Delimiters defaultDelimiters = new Delimiters(Collections.emptyList());
 
         // When
-        Delimiters delimiters = delimiterExtractor.extractDelimitersFrom(input, defaultDelimiters);
+        Delimiters delimiters = delimiterExtractor.extractFrom(input, defaultDelimiters);
 
         // Then
         assertThat(delimiters).isEqualTo(new Delimiters(List.of(new Delimiter(";"))));
@@ -35,7 +35,7 @@ class DelimiterExtractorTest {
         Delimiters defaultDelimiters = new Delimiters(Collections.emptyList());
 
         // When
-        Delimiters delimiters = delimiterExtractor.extractDelimitersFrom(input, defaultDelimiters);
+        Delimiters delimiters = delimiterExtractor.extractFrom(input, defaultDelimiters);
 
         // Then
         assertThat(delimiters).isEqualTo(
@@ -51,7 +51,7 @@ class DelimiterExtractorTest {
         Delimiters defaultDelimiters = new Delimiters(Collections.emptyList());
 
         // When
-        Delimiters delimiters = delimiterExtractor.extractDelimitersFrom(input, defaultDelimiters);
+        Delimiters delimiters = delimiterExtractor.extractFrom(input, defaultDelimiters);
 
         // Then
         assertThat(delimiters).isEqualTo(new Delimiters(List.of(new Delimiter("!!"))));
@@ -66,7 +66,7 @@ class DelimiterExtractorTest {
         Delimiters defaultDelimiters = new Delimiters(Collections.emptyList());
 
         // When
-        Delimiters delimiters = delimiterExtractor.extractDelimitersFrom(input, defaultDelimiters);
+        Delimiters delimiters = delimiterExtractor.extractFrom(input, defaultDelimiters);
 
         // Then
         assertThat(delimiters).isEqualTo(new Delimiters(List.of(new Delimiter("!5!"))));
@@ -81,7 +81,7 @@ class DelimiterExtractorTest {
         Delimiters defaultDelimiters = new Delimiters(Collections.emptyList());
 
         // When
-        Delimiters delimiters = delimiterExtractor.extractDelimitersFrom(input, defaultDelimiters);
+        Delimiters delimiters = delimiterExtractor.extractFrom(input, defaultDelimiters);
 
         // Then
         assertThat(delimiters).isEqualTo(new Delimiters(List.of(new Delimiter("("))));
@@ -96,7 +96,7 @@ class DelimiterExtractorTest {
         Delimiters defaultDelimiters = new Delimiters(Collections.emptyList());
 
         // When & Then
-        assertThatThrownBy(() -> delimiterExtractor.extractDelimitersFrom(input, defaultDelimiters))
+        assertThatThrownBy(() -> delimiterExtractor.extractFrom(input, defaultDelimiters))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("구분자는 숫자로만 이루어질 수 없습니다. 문자를 포함하세요.");
     }

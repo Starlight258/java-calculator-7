@@ -30,21 +30,21 @@ public class StringCalculator {
         this.addable = addable;
     }
 
-    public Delimiters initialize() {
+    public Delimiters initializeDefaultDelimiters() {
 
         return new Delimiters(List.of(new Delimiter(","), new Delimiter(":")));
     }
 
-    public void run(final Delimiters defaultDelimiters) {
-        String input = consoleInputHandler.getUserInput();
+    public void calculate(final Delimiters defaultDelimiters) {
+        String input = consoleInputHandler.read();
 
-        Delimiters delimiters = delimiterExtractor.extractDelimitersFrom(input, defaultDelimiters);
+        Delimiters delimiters = delimiterExtractor.extractFrom(input, defaultDelimiters);
 
-        List<String> splitInput = splitter.splitByDelimiters(input, delimiters);
+        List<String> splitInput = splitter.split(input, delimiters);
 
-        List numbers = numberConvertible.convertStringToNumber(splitInput);
+        List numbers = numberConvertible.convert(splitInput);
 
-        consoleOutputHandler.printResult(addable.addNumbers(numbers));
+        consoleOutputHandler.printResult(addable.add(numbers));
     }
 
 }

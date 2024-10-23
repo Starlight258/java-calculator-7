@@ -18,7 +18,7 @@ class IntegerConvertibleTest {
         IntegerConvertible integerConvertible = new IntegerConvertible();
 
         // When
-        List<Integer> numbers = integerConvertible.convertStringToNumber(splitInput);
+        List<Integer> numbers = integerConvertible.convert(splitInput);
 
         // Then
         assertThat(numbers).containsAll(List.of(1, 2, 3));
@@ -32,7 +32,7 @@ class IntegerConvertibleTest {
         IntegerConvertible integerConvertible = new IntegerConvertible();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> integerConvertible.convertStringToNumber(splitInput))
+        Assertions.assertThatThrownBy(() -> integerConvertible.convert(splitInput))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수 범위를 벗어난 수 또는 구분자를 제외한 문자열을 입력할 수 없습니다.");
     }
@@ -45,7 +45,7 @@ class IntegerConvertibleTest {
         IntegerConvertible integerConvertible = new IntegerConvertible();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> integerConvertible.convertStringToNumber(splitInput))
+        Assertions.assertThatThrownBy(() -> integerConvertible.convert(splitInput))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수 범위를 벗어난 수 또는 구분자를 제외한 문자열을 입력할 수 없습니다.");
     }
@@ -58,7 +58,7 @@ class IntegerConvertibleTest {
         IntegerConvertible integerConvertible = new IntegerConvertible();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> integerConvertible.convertStringToNumber(splitInput))
+        Assertions.assertThatThrownBy(() -> integerConvertible.convert(splitInput))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수 범위를 벗어난 수 또는 구분자를 제외한 문자열을 입력할 수 없습니다.");
     }
@@ -71,7 +71,7 @@ class IntegerConvertibleTest {
         IntegerConvertible integerConvertible = new IntegerConvertible();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> integerConvertible.convertStringToNumber(splitInput))
+        Assertions.assertThatThrownBy(() -> integerConvertible.convert(splitInput))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("양수가 아닙니다.");
     }

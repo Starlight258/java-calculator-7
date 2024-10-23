@@ -18,7 +18,7 @@ class LongConvertibleTest {
         LongConvertible longConvertible = new LongConvertible();
 
         // When
-        List<Long> numbers = longConvertible.convertStringToNumber(splitInput);
+        List<Long> numbers = longConvertible.convert(splitInput);
 
         // Then
         assertThat(numbers).containsAll(List.of(1L, 2L, 3L));
@@ -32,7 +32,7 @@ class LongConvertibleTest {
         LongConvertible longConvertible = new LongConvertible();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> longConvertible.convertStringToNumber(splitInput))
+        Assertions.assertThatThrownBy(() -> longConvertible.convert(splitInput))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수 범위를 벗어난 수 또는 구분자를 제외한 문자열을 입력할 수 없습니다.");
     }
@@ -45,7 +45,7 @@ class LongConvertibleTest {
         LongConvertible longConvertible = new LongConvertible();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> longConvertible.convertStringToNumber(splitInput))
+        Assertions.assertThatThrownBy(() -> longConvertible.convert(splitInput))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수 범위를 벗어난 수 또는 구분자를 제외한 문자열을 입력할 수 없습니다.");
     }
@@ -58,7 +58,7 @@ class LongConvertibleTest {
         LongConvertible longConvertible = new LongConvertible();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> longConvertible.convertStringToNumber(splitInput))
+        Assertions.assertThatThrownBy(() -> longConvertible.convert(splitInput))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("정수 범위를 벗어난 수 또는 구분자를 제외한 문자열을 입력할 수 없습니다.");
     }
@@ -71,7 +71,7 @@ class LongConvertibleTest {
         LongConvertible longConvertible = new LongConvertible();
 
         // When & Then
-        Assertions.assertThatThrownBy(() -> longConvertible.convertStringToNumber(splitInput))
+        Assertions.assertThatThrownBy(() -> longConvertible.convert(splitInput))
                 .isExactlyInstanceOf(IllegalArgumentException.class)
                 .hasMessage("양수가 아닙니다.");
     }

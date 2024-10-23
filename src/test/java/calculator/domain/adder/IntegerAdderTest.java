@@ -22,7 +22,7 @@ class IntegerAdderTest {
         IntegerAdder integerAdder = new IntegerAdder();
 
         // When
-        Integer sum = integerAdder.addNumbers(numbers);
+        Integer sum = integerAdder.add(numbers);
 
         // Then
         assertThat(sum).isEqualTo(6);
@@ -36,7 +36,7 @@ class IntegerAdderTest {
         IntegerAdder integerAdder = new IntegerAdder();
 
         // When & Then
-        assertThatThrownBy(() -> integerAdder.addNumbers(numbers))
+        assertThatThrownBy(() -> integerAdder.add(numbers))
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("오버플로우가 발생했습니다.");
     }
