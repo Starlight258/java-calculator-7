@@ -21,13 +21,13 @@ class DelimitersTest {
         void 성공_구분자추가_유효한구분자() {
             // Given
             Delimiters delimiters = new Delimiters(List.of(new Delimiter(",")));
-            Delimiter newDelimiter = new Delimiter("a!");
+            Delimiter newDelimiter = new Delimiter("!");
 
             // When
             Delimiters totalDelimiters = delimiters.add(newDelimiter);
 
             // Then
-            assertThat(totalDelimiters).isEqualTo(new Delimiters(List.of(new Delimiter(","), new Delimiter("a!"))));
+            assertThat(totalDelimiters).isEqualTo(new Delimiters(List.of(new Delimiter(","), new Delimiter("!"))));
         }
 
         @Test
@@ -40,20 +40,7 @@ class DelimitersTest {
             // When & Then
             assertThatThrownBy(() -> delimiters.add(newDelimiter))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("구분자를 중복 선언하거나, 내부에 다른 구분자를 포함할 수 없습니다.");
-        }
-
-        @Test
-        @DisplayName("이미 선언된 구분자가 새로운 구분자 안에 포함되면 실패한다")
-        void 실패_구분자추가_구분자를포함하는구분자() {
-            // Given
-            Delimiters delimiters = new Delimiters(List.of(new Delimiter(","), new Delimiter(":")));
-            Delimiter newDelimiter = new Delimiter(",!");
-
-            // When & Then
-            assertThatThrownBy(() -> delimiters.add(newDelimiter))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage("구분자를 중복 선언하거나, 내부에 다른 구분자를 포함할 수 없습니다.");
+                    .hasMessage("중복된 구분자가 존재합니다.");
         }
 
     }

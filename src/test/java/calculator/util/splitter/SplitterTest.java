@@ -15,8 +15,8 @@ class SplitterTest {
     @DisplayName("구분자로 문자열을 쪼갠다")
     void 성공_문자열쪼개기_주어진구분자() {
         // Given
-        String input = "//!!\\n1!!2";
-        Delimiters delimiters = new Delimiters(List.of(new Delimiter("!!")));
+        String input = "//!\\n1!2";
+        Delimiters delimiters = new Delimiters(List.of(new Delimiter("!")));
         Splitter splitter = new Splitter();
 
         // When
