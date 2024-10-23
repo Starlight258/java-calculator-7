@@ -12,7 +12,6 @@ public class DelimiterExtractor {
         while (matcher.find()) {
             totalDelimiters = totalDelimiters.add(new Delimiter(matcher.group(1)));
         }
-
         return totalDelimiters;
     }
 

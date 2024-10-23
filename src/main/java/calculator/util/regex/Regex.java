@@ -35,7 +35,6 @@ public class Regex {
             return false;
         }
         Regex other = (Regex) o;
-
         return this.value().equals(other.value());
     }
 

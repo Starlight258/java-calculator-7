@@ -17,7 +17,6 @@ public class Delimiters {
 
     public Delimiters add(final Delimiter delimiter) {
         validate(delimiter);
-
         return new Delimiters(concat(delimiter));
     }
 
@@ -26,7 +25,6 @@ public class Delimiters {
         for (Delimiter delimiter : delimiters) {
             regex.addContinuously(delimiter.delimiter());
         }
-
         return regex;
     }
 
@@ -41,7 +39,6 @@ public class Delimiters {
     }
 
     private List<Delimiter> concat(final Delimiter delimiter) {
-
         return Stream.concat(delimiters.stream(), Stream.of(new Delimiter(delimiter.delimiter())))
                 .toList();
     }
@@ -55,7 +52,6 @@ public class Delimiters {
             return false;
         }
         Delimiters that = (Delimiters) o;
-
         return delimiters.equals(that.delimiters);
     }
 

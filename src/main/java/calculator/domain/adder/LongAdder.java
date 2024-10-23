@@ -13,7 +13,6 @@ public class LongAdder implements Addable<Long> {
         for (Long number : numbers) {
             sum = addWithOverflowCheck(sum, number);
         }
-
         return sum;
     }
 
@@ -21,11 +20,9 @@ public class LongAdder implements Addable<Long> {
         if (added > 0 && sum > MAX_VALUE - added) {
             throw new IllegalStateException("오버플로우가 발생했습니다.");
         }
-
         if (added < 0 && sum < MIN_VALUE - added) {
             throw new IllegalStateException("오버플로우가 발생했습니다.");
         }
-
         return sum + added;
     }
 

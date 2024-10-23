@@ -31,19 +31,14 @@ public class StringCalculator {
     }
 
     public Delimiters initializeDefaultDelimiters() {
-
         return new Delimiters(List.of(new Delimiter(","), new Delimiter(":")));
     }
 
     public void calculate(final Delimiters defaultDelimiters) {
         String input = consoleInputHandler.read();
-
         Delimiters delimiters = delimiterExtractor.extractFrom(input, defaultDelimiters);
-
         List<String> splitInput = splitter.split(input, delimiters);
-
         List numbers = numberConvertible.convert(splitInput);
-
         consoleOutputHandler.printResult(addable.add(numbers));
     }
 
