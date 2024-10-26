@@ -3,16 +3,18 @@ package calculator.domain.delimiter;
 import calculator.util.regex.Regex;
 import java.util.Objects;
 
-public record Delimiter(String delimiter) {
+public class Delimiter {
 
     private static final String POSITIVE_NUMBER_REGEX = "^(\\+?)\\d*$";
+    private final String value;
 
-    public Delimiter {
-        validate(delimiter);
+    public Delimiter(final String value) {
+        validate(value);
+        this.value = value;
     }
 
     public boolean matches(final Regex regex) {
-        return delimiter.matches(regex.value());
+        return value.matches(regex.value());
     }
 
     private void validate(final String delimiter) {
@@ -25,21 +27,24 @@ public record Delimiter(String delimiter) {
         }
     }
 
+    public String value() {
+        return value;
+    }
+
     @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
+    public boolean equals(Object obj) {
+        if (obj == this) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (obj == null || obj.getClass() != this.getClass()) {
             return false;
         }
-        Delimiter delimiter1 = (Delimiter) o;
-        return Objects.equals(delimiter, delimiter1.delimiter);
+        var that = (Delimiter) obj;
+        return Objects.equals(this.value, that.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(delimiter);
+        return Objects.hash(value);
     }
-
 }

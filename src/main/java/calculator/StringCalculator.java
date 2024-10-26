@@ -12,6 +12,9 @@ import java.util.List;
 
 public class StringCalculator {
 
+    public static final String COMMA = ",";
+    public static final String COLON = ":";
+
     private final ConsoleInputHandler consoleInputHandler;
     private final ConsoleOutputHandler consoleOutputHandler;
     private final DelimiterExtractor delimiterExtractor;
@@ -31,7 +34,7 @@ public class StringCalculator {
     }
 
     public Delimiters initializeDefaultDelimiters() {
-        return new Delimiters(List.of(new Delimiter(","), new Delimiter(":")));
+        return new Delimiters(List.of(new Delimiter(COMMA), new Delimiter(COLON)));
     }
 
     public void calculate(final Delimiters defaultDelimiters) {

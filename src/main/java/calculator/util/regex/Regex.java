@@ -8,22 +8,22 @@ public class Regex {
 
     private static final String OR = "|";
 
-    private final StringBuilder regex;
+    private final StringBuilder value;
 
-    public Regex(final String regex) {
-        this.regex = new StringBuilder(regex);
+    public Regex(final String value) {
+        this.value = new StringBuilder(value);
     }
 
-    public void add(final String value) {
-        regex.append(quote(value));
+    public void add(final String other) {
+        value.append(quote(other));
     }
 
-    public void addContinuously(final String value) {
-        regex.append(OR).append(quote(value));
+    public void addContinuously(final String other) {
+        value.append(OR).append(quote(other));
     }
 
     public String value() {
-        return regex.toString();
+        return value.toString();
     }
 
     @Override

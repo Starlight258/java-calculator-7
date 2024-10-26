@@ -23,7 +23,7 @@ public class Delimiters {
     public Regex makeRegex() {
         Regex regex = new Regex(CUSTOM_DELIMITER.regex());
         for (Delimiter delimiter : delimiters) {
-            regex.addContinuously(delimiter.delimiter());
+            regex.addContinuously(delimiter.value());
         }
         return regex;
     }
@@ -39,7 +39,7 @@ public class Delimiters {
     }
 
     private List<Delimiter> concat(final Delimiter delimiter) {
-        return Stream.concat(delimiters.stream(), Stream.of(new Delimiter(delimiter.delimiter())))
+        return Stream.concat(delimiters.stream(), Stream.of(new Delimiter(delimiter.value())))
                 .toList();
     }
 
